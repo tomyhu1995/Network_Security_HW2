@@ -25,9 +25,9 @@ function my_own_hash($input)
 function getrand_id(){
     $id_len = 16;//字串長度
     $id = '';
-    $word = 'abcdefghijklmnopqrstuvwxyz0123456789';//字典檔 你可以將 數字 0 1 及字母 O L 排除
+    $word = '0123456789abcdef';//字典檔 你可以將 數字 0 1 及字母 O L 排除
     $len = strlen($word);//取得字典檔長度
- 
+  
     for($i = 0; $i < $id_len; $i++){ //總共取 幾次
         $id .= $word[rand() % $len];//隨機取得一個字元
     }
@@ -45,7 +45,12 @@ while(my_own_hash($b) !== $b){ //$x=>要取得幾筆亂數帳號
         $x-=1;
     }//有重覆再重新產生一筆
     echo "b = ".$b.", "."Hash = ".my_own_hash($b)."\r\n";
+
+    if(my_own_hash($b) === $b){
+      echo "bing go !"."     b = ".$b.", "."Hash = ".my_own_hash($b)."\r\n";
+    }
 }
+
 
 
 
