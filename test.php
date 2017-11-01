@@ -1,5 +1,7 @@
 <?php
 
+
+
 function my_own_hash($input)
 {
   $magic1 = 1345345333;
@@ -22,34 +24,74 @@ function my_own_hash($input)
   return $output;
 }
 
-function getrand_id(){
-    $id_len = 16;//字串長度
-    $id = '';
-    $word = '0123456789abcdef';//字典檔 你可以將 數字 0 1 及字母 O L 排除
-    $len = strlen($word);//取得字典檔長度
-  
-    for($i = 0; $i < $id_len; $i++){ //總共取 幾次
+function get_id(){
+    $word = '0123456789abcdef';//字典檔
+
+    for($a = 0; $a < 16; $a++){
+      for($b = 0; $b < 16; $b++){
+        for($c = 0; $c < 16; $c++){
+          for($d = 0; $d < 16; $d++){
+            for($e = 0; $e < 16; $e++){
+              for($f = 0; $f < 16; $f++){
+                for($g = 0; $g < 16; $g++){
+                  for($h = 0; $h < 16; $h++){
+                    for($i = 0; $i < 16; $i++){
+                      for($j = 0; $j < 16; $j++){
+                        for($k = 0; $k < 16; $k++){
+                          for($l = 0; $l < 16; $l++){
+                            for($m = 0; $m < 16; $m++){
+                              for($n = 0; $n < 16; $n++){
+                                for($o = 0; $o < 16; $o++){
+                                  for($p = 0; $p < 16; $p++){
+                                    $id = '';
+                                    $id .= $word[$a];
+                                    $id .= $word[$b];
+                                    $id .= $word[$c];
+                                    $id .= $word[$d];
+                                    $id .= $word[$e];
+                                    $id .= $word[$f];
+                                    $id .= $word[$g];
+                                    $id .= $word[$h];
+                                    $id .= $word[$i];
+                                    $id .= $word[$j];
+                                    $id .= $word[$k];
+                                    $id .= $word[$l];
+                                    $id .= $word[$m];
+                                    $id .= $word[$n];
+                                    $id .= $word[$o];
+                                    $id .= $word[$p];
+
+                                    echo "ID = ".$id.", "."Hash = ".my_own_hash($id)."\r\n";
+
+                                    if(my_own_hash($id) === $id){
+                                        echo "bing go !"."     b = ".$id.", "."Hash = ".my_own_hash($id)."\r\n";
+                                        break;
+                                    }
+
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /*for($i = 0; $i < $id_len; $i++){ //總共取 幾次
         $id .= $word[rand() % $len];//隨機取得一個字元
-    }
+    }*/
 
-    return $id;//回傳亂數帳號
 }
  
-$a=array();//初始化一個陣列要來存放所產生的亂數
- 
-while(my_own_hash($b) !== $b){ //$x=>要取得幾筆亂數帳號
-    $b=getrand_id();//取得亂數帳號
-    if(!in_array($b,$a)){//判斷有沒有重覆
-        array_push($a,$b);//將產生的亂數帳號加入陣列
-    }else{
-        $x-=1;
-    }//有重覆再重新產生一筆
-    echo "b = ".$b.", "."Hash = ".my_own_hash($b)."\r\n";
-
-    if(my_own_hash($b) === $b){
-      echo "bing go !"."     b = ".$b.", "."Hash = ".my_own_hash($b)."\r\n";
-    }
-}
+get_id();
 
 
 
