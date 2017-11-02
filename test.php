@@ -61,11 +61,14 @@ function get_id(){
                                     $id .= $word[$o];
                                     $id .= $word[$p];
 
-                                    echo "ID = ".$id.", "."Hash = ".my_own_hash($id)."\r\n";
+                                    //echo "ID = ".$id.", "."Hash = ".my_own_hash($id)."\r\n";
+				    if($k === 10){
+					echo "Finding....."."  ID = ".$id.", "."Hash = ".my_own_hash($id)."\r\n";
+				    }
 
                                     if(my_own_hash($id) === $id){
                                         echo "bing go !"."     b = ".$id.", "."Hash = ".my_own_hash($id)."\r\n";
-                                        break;
+                                        goto success;
                                     }
 
                                   }
@@ -88,10 +91,13 @@ function get_id(){
     /*for($i = 0; $i < $id_len; $i++){ //總共取 幾次
         $id .= $word[rand() % $len];//隨機取得一個字元
     }*/
-
+success:
+	echo 'The end'."\r\n";
 }
  
 get_id();
+//echo my_own_hash('ffffffffffffff10');
+
 
 
 
