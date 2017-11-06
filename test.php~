@@ -93,8 +93,8 @@ success:
 	echo 'The end'."\r\n";
 }
  
-get_id();
 
+echo decrypt_content('h3uBsdHeqS8IJsJ3Fu1wViv72pXaWAf8Z9O8HNmbp+40UEKYubuRAnVo8q\/yJ9cEaE1cWXvEP2p4zfn7EvdozjI4WAbjone0S5TqVwld0fsiFCfbQEWUyKJktXipIdUU\/qT0yaH1fGa0g4PRuozchFKXOcNz6iSDHtGCbuJK2R3SOW3c3C+Ec\/xgIxTtngTb')."\r\n";
 
 
 
