@@ -1,7 +1,5 @@
 <?php
 
-
-
 function my_own_hash($input)
 {
   $magic1 = 1345345333;
@@ -24,25 +22,44 @@ function my_own_hash($input)
   return $output;
 }
 
+function decrypt_content($content) {
+  require './config.php';
+
+  $cipher = 'aes-256-cbc';  
+  $ivSize  = openssl_cipher_iv_length($cipher);
+
+  $content = base64_decode($content);
+  $ivData   = substr($content, 0, $ivSize);
+
+  $encData = substr($content, $ivSize);
+
+  $output = openssl_decrypt($encData, 
+                            $cipher, 
+                            $blog_config['encrypt_key'], 
+                            OPENSSL_RAW_DATA, 
+                            $ivData);
+  return $output;
+}
+
 function get_id(){
     $word = '0123456789abcdef';//字典檔
 
-    for($a = 15; $a >= 0; $a--){
-      for($b = 15; $b >= 0; $b--){
-        for($c = 15; $c >= 0; $c--){
-          for($d = 15; $d >= 0; $d--){
-            for($e = 15; $e >= 0; $e--){
-              for($f = 15; $f >= 0; $f--){
-                for($g = 15; $g >= 0; $g--){
-                  for($h = 15; $h >= 0; $h--){
-                    for($i = 15; $i >= 0; $i--){
-                      for($j = 15; $j >= 0; $j--){
-                        for($k = 15; $k >= 0; $k--){
-                          for($l = 15; $l >= 0; $l--){
-                            for($m = 15; $m >= 0; $m--){
-                              for($n = 15; $n >= 0; $n--){
-                                for($o = 15; $o >= 0; $o--){
-                                  for($p = 15; $p >= 0; $p--){
+    for($a =15; $a >= 0; $a--){
+      for($b =15; $b >= 0; $b--){
+        for($c =15; $c >= 0; $c--){
+          for($d =15; $d >= 0; $d--){
+            for($e =15; $e >= 0; $e--){
+              for($f =15; $f >= 0; $f--){
+                for($g =15; $g >= 0; $g--){
+                  for($h =15; $h >= 0; $h--){
+                    for($i =15; $i >= 0; $i--){
+                      for($j =15; $j >= 0; $j--){
+                        for($k =15; $k >= 0; $k--){
+                          for($l =15; $l >= 0; $l--){
+                            for($m =15; $m >= 0; $m--){
+                              for($n =15; $n >= 0; $n--){
+                                for($o =15; $o >= 0; $o--){
+                                  for($p =15; $p >= 0; $p--){
                                     $id = '';
                                     $id .= $word[$a];
                                     $id .= $word[$b];
@@ -62,9 +79,9 @@ function get_id(){
                                     $id .= $word[$p];
 
                                     //echo "ID = ".$id.", "."Hash = ".my_own_hash($id)."\r\n";
-				    if($k === 10){
+				    //if($k === 10){
 					echo "Finding....."."  ID = ".$id.", "."Hash = ".my_own_hash($id)."\r\n";
-				    }
+				    //}
 
                                     if(my_own_hash($id) === $id){
                                         echo "bing go !"."     b = ".$id.", "."Hash = ".my_own_hash($id)."\r\n";
@@ -95,8 +112,9 @@ success:
 	echo 'The end'."\r\n";
 }
  
-get_id();
-//echo my_own_hash('ffffffffffffff10');
+
+echo decrypt_content('h3uBsdHeqS8IJsJ3Fu1wViv72pXaWAf8Z9O8HNmbp+40UEKYubuRAnVo8q\/yJ9cEaE1cWXvEP2p4zfn7EvdozjI4WAbjone0S5TqVwld0fsiFCfbQEWUyKJktXipIdUU\/qT0yaH1fGa0g4PRuozchFKXOcNz6iSDHtGCbuJK2R3SOW3c3C+Ec\/xgIxTtngTb')."\r\n";
+
 
 
 
